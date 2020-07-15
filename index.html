@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COVID-19 Interactive Map</title>
     <!-- Google Font -->
     <!--Font Families
         Font-Family: 'Work Sans', Sans-Serif;
         Font-Family: 'Open Sans', Sans-Serif;-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Work+Sans:300" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans|Work+Sans:300"
+      rel="stylesheet"
+    />
     <!-- Style Sheet -->
-    <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="assets/CSS/style.css" />
+  </head>
+  <body>
     <!-- Navigation Bar -->
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#map">Map</a>
-        <a href="#saved-locations">Saved Locations</a>
-        <a href="#tips">COVID-19 Tips</a>
+    <nav id="navbar-container">
+      <a href="#home">Home</a>
+      <a href="#map">Map</a>
+      <a href="#saved-locations">Saved Locations</a>
+      <a href="#tips">COVID-19 Tips</a>
     </nav>
     <!-- Hero -->
     <header>
-        <h1>COVID-19 Interactive Map</h1>
+      <h1>COVID-19 Interactive Map</h1>
     </header>
     <!-- Map -->
     <main>
-        <div id="map"></div>
+      <div id="map-container"></div>
     </main>
     <!-- Selected Item Information -->
-    <aside>
-        <!-- Display City Info -->
-        <div></div>
-        <!-- Display Testing Centers -->
-        <div></div>
+    <aside id="city-container">
+      <!-- Display City Info -->
+      <div id="city-info"></div>
+      <!-- Display Testing Centers -->
+      <div id="testing-center"></div>
     </aside>
     <!-- COVID Tips -->
-    <div></div>
+    <div id="tips-container"></div>
     <!-- Footer -->
     <footer></footer>
-</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+  </body>
 </html>

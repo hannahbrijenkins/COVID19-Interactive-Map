@@ -1,17 +1,17 @@
 /* universal */
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 /* root colors */
 :root {
-    --primary-color: #151e3f;
-    --dark-color: #030027;
-    --light-color: #E9F1F7;
-    --secondary-color: #ffc847;
-    --tertiary-color: #1985a1;
+  --primary-color: #151e3f;
+  --dark-color: #030027;
+  --light-color: #e9f1f7;
+  --secondary-color: #ffc847;
+  --tertiary-color: #1985a1;
 }
 /* applies to style of body */
 body {
-    background-color: var(--primary-color)
+  background-color: var(--primary-color);
 }
