@@ -13,5 +13,28 @@
 }
 /* applies to style of body */
 body {
-    background-color: var(--primary-color)
+    background-color: var(--primary-color);
+    color: white;
+    Font-Family: 'Open Sans', Sans-Serif;
+}
+header {
+    font-family: 'Work Sans', Sans-Serif;
+    background-color: var(--dark-color);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    
+}
+.title {
+    margin: 0;
+    padding: 15px 15px 0px 15px;
+    text-align: center;
+}
+nav {
+    padding: 15px;
+    color: white;
+}
+.menu-item {
+    color: white;
 }
