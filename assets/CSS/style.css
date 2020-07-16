@@ -56,3 +56,9 @@ nav {
     padding: 10%;
     line-height: .5cm;
 }
+.info-container {
+    padding: 15px;
+}
+.stats {
+    justify-self: end;
+}
