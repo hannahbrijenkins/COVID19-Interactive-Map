@@ -38,3 +38,21 @@ nav {
 .menu-item {
     color: white;
 }
+.hero {
+    background-image: url("../images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+}
+.hero-wrap {
+    background-color: rgba(233,241,247,0.5);
+    border-radius: .3em;
+}
+.about {
+    color: var(--dark-color);
+    font-size: .8em;
+    text-align: center;
+    font-weight: bold;
+    padding: 10%;
+    line-height: .5cm;
+}
