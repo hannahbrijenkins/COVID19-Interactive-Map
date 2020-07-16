@@ -53,7 +53,7 @@ async function covidData(userChoice){
     // User wants compiled US values
     else {
         try{
-            const unitedStatesData = await fetch(`https://covidtracking.com/api/v1/states/current.json`);
+            const unitedStatesData = await fetch(`https://covidtracking.com/api/v1/us/current.json`);
 
             // Function to pass compiled US Data into
                 // Format data
