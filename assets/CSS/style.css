@@ -13,5 +13,46 @@
 }
 /* applies to style of body */
 body {
-    background-color: var(--primary-color)
+    background-color: var(--primary-color);
+    color: white;
+    Font-Family: 'Open Sans', Sans-Serif;
+}
+header {
+    font-family: 'Work Sans', Sans-Serif;
+    background-color: var(--dark-color);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    
+}
+.title {
+    margin: 0;
+    padding: 15px 15px 0px 15px;
+    text-align: center;
+}
+nav {
+    padding: 15px;
+    color: white;
+}
+.menu-item {
+    color: white;
+}
+.hero {
+    background-image: url("../images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+}
+.hero-wrap {
+    background-color: rgba(233,241,247,0.5);
+    border-radius: .3em;
+}
+.about {
+    color: var(--dark-color);
+    font-size: .8em;
+    text-align: center;
+    font-weight: bold;
+    padding: 10%;
+    line-height: .5cm;
 }

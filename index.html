@@ -9,43 +9,39 @@
         Font-Family: 'Work Sans', Sans-Serif;
         Font-Family: 'Open Sans', Sans-Serif;-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Work+Sans:300" rel="stylesheet">
+    <!-- PURE CSS Framework -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
     <!-- Style Sheet -->
     <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#map">Map</a>
-        <a href="#saved-locations">Saved Locations</a>
-        <a href="#tips">COVID-19 Tips</a>
-    </nav>
-    <!-- Hero -->
     <header>
-        <h1>COVID-19 Interactive Map</h1>
+        <h1 class="title">COVID-19 Interactive Map</h1>
+        <!-- Navigation Bar -->
+        <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+            <a class="pure-menu-heading pure-menu-link menu-item" href="">HOME</a>
+            <a class="pure-menu-heading pure-menu-link menu-item" href="">MAP</a>
+            <a  class="pure-menu-heading pure-menu-link menu-item" href="">SAVED CITIES</a>
+            <a  class="pure-menu-heading pure-menu-link menu-item" href="">TIPS</a>
+            <a  class="pure-menu-heading pure-menu-link menu-item" href="https://www.cdc.gov/coronavirus/2019-nCoV/index.html">CDC WEBSITE</a>
+        </nav>
     </header>
-    <!-- Map -->
     <main>
+        <!-- hero -->
+        <div class="hero">
+            <div class="hero-wrap"><p class="about">As the COVID-19 virus sweeps acros the world, we wanted to create a tool that you can use to stay informed. Below, you will find information by state in the US including positive case numbers, and testing sites. We also have tips on how you can stay safe during these times.</p></div>
+        </div>
         <div id="map"></div>
     </main>
     <!-- Selected Item Information -->
-    <aside>
+    <aside id="aside">
         <!-- Display City Info -->
-        <div></div>
+        <div id="city-info"></div>
         <!-- Display Testing Centers -->
-        <div></div>
+        <div id=test-centers></div>
     </aside>
-    <!-- COVID Tips -->
-    <div></div>
     <!-- Footer -->
     <footer></footer>
     <script src="./assets/JS/script.js"></script>
 </body>
 </html>
-
-State - Date
-Positive cases: Positive Total (Increase Number, Neg-Red, Pos-Green)Negative Total
-Negative Cases: Negative Total (Increase/Decrease)
-Hospitalized Currently
-Death Total
-Time Updated
