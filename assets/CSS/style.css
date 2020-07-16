@@ -59,6 +59,9 @@ nav {
 .info-container {
     padding: 15px;
 }
+.state {
+    font-family: 'Work Sans', Sans-Serif;;
+}
 .stats {
     justify-self: end;
 }
