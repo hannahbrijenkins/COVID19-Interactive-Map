@@ -1,83 +1,67 @@
-// Create array or objects
-    // Save each state latitude/longitude
-    // Populate data for each state on map with markers
+// Containers
+const mapContainerEl = document.querySelector(`#map-container`);
+const cityContainerEl = document.querySelector(`#city-container`);
+const infoContainerEl = document.querySelector(`#info-container`);
 
-// Dropdown to select state
-    // Capture value of the selected state
-    // Pass into fetch function
-    // Return data
-    // Pass data into functions
+// State Specific Data Variables
+const stateNameContainerEl = document.querySelector("#state-name");
+const stateDataContainerEl = document.querySelector("#state-date");
+const positiveCasesEl = document.querySelector("#pos");
+const negativeCasesEl = document.querySelector("#neg");
+const hospitalContainerEl = document.querySelector("#hospital");
+const deathContainerEl = document.querySelector("#deaths");
+const updateContainerEl = document.querySelector("#update");
 
-
-// On page load show testing centers
-
-// User option to show COVID state data
+const testCentersEl = document.querySelector(`#test-centers`);
 
 // Function to hold states
-const states = [""];
+const states = "al";
 
 // Array to hold data for markers;
 let markers = [];
 
-async function covidData(userChoice){
-    // If user wants specific state data
-    if (states.contains(userChoice)){
-        try{
-            const stateData = await fetch(`https://covidtracking.com/api/v1/states/${state}/current.json`);
-
-            // Functions to pass state data into
-                // Format data
-                // Pass data into markers array
-                // Display a marker for the state
-                // Populate data
-                // Allow user to save their selection
-        } catch{
-            error();
-        }
-    } 
-    // If the user selects for all US states
-    else if (/*User Wants All State Data*/) {
-        try{
-            const allStatesData = await fetch(`https://covidtracking.com/api/v1/states/current.json`);
-
-            // Function to pass all states data into
-                // Format data
-                // Populate marker for data
-                // Display a marker for every state
-                // Make markers clickable 
-                // Allow user to save the selection
-        } catch{
-            error();
-        }
-    }
-    // User wants compiled US values
-    else {
-        try{
-            const unitedStatesData = await fetch(`https://covidtracking.com/api/v1/us/current.json`);
-
-            // Function to pass compiled US Data into
-                // Format data
-                // Populate marker for data
-                // Display single marker with all US data
-                // Allow user to favorite data
-        }  catch {
-            error();
-        }
+async function covidData(){
+    // state Specific data
+    try{
+        // Fetch Data
+        const stateData = await fetch(`https://covidtracking.com/api/v1/states/${states}/current.json`);
+        // Format Data
+        const formattedData = await stateData.json();
+        console.log(formattedData);
+        // Pass data into function
+        stateSpecificData(formattedData);
+    } catch{
+        console.log("error");
     }
 }
 
 
-// Error catching function
-function error(){
-    // Determine what error catching will be
-}
-
-function populateData {
-    // Data to consider
+function stateSpecificData(stateData) {
+// Data to consider
         // State - Date
+        stateNameContainerEl.innerHTML = `State: ${stateData.state}`
+        stateDataContainerEl.innerHTML = `Date: ${stateData.date}`
         // Positive cases: Positive Total (Increase Number, Neg-Red, Pos-Green)Negative Total
+        positiveCasesEl.innerHTML = `${stateData.positive} (${stateData.positiveIncrease})`
         // Negative Cases: Negative Total (Increase/Decrease)
+        negativeCasesEl.innerHTML = `${stateData.negative} (${stateData.negativeIncrease})`
         // Hospitalized Currently
+        hospitalContainerEl.innerHTML = `${stateData.hospitalized}`
         // Death Total
+        deathContainerEl.innerHTML = `${stateData.deathConfirmed}`
         // Time Updated
+        updateContainerEl.innerHTML = `${stateData.dateModified}`
 }
+
+covidData();
+
+
+// function populateMapData {
+//     // Data to consider
+//         // State - Date
+//         // Positive cases: Positive Total (Increase Number, Neg-Red, Pos-Green)Negative Total
+//         // Negative Cases: Negative Total (Increase/Decrease)
+//         // Hospitalized Currently
+//         // Death Total
+//         // Time Updated
+// }
