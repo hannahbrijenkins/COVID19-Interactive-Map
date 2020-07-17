@@ -1,62 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COVID-19 Interactive Map</title>
     <!-- Google Font -->
     <!--Font Families
         Font-Family: 'Work Sans', Sans-Serif;
         Font-Family: 'Open Sans', Sans-Serif;-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Work+Sans:300" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans|Work+Sans:300"
+      rel="stylesheet"
+    />
     <!-- PURE CSS Framework -->
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+      integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ"
+      crossorigin="anonymous"
+    />
     <!-- Style Sheet -->
-    <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="assets/CSS/style.css" />
+  </head>
+  <body>
     <header>
-        <h1 class="title">COVID-19 Interactive Map</h1>
-        <!-- Navigation Bar -->
-        <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
-            <a class="pure-menu-heading pure-menu-link menu-item" href="">HOME</a>
-            <a class="pure-menu-heading pure-menu-link menu-item" href="">MAP</a>
-            <a  class="pure-menu-heading pure-menu-link menu-item" href="">SAVED CITIES</a>
-            <a  class="pure-menu-heading pure-menu-link menu-item" href="">TIPS</a>
-            <a  class="pure-menu-heading pure-menu-link menu-item" href="https://www.cdc.gov/coronavirus/2019-nCoV/index.html">CDC WEBSITE</a>
-        </nav>
+      <h1 class="title">COVID-19 Interactive Map</h1>
+      <!-- Navigation Bar -->
+      <nav
+        id="nav-container"
+        class="pure-menu pure-menu-horizontal pure-menu-scrollable"
+      >
+        <a class="pure-menu-heading pure-menu-link menu-item" href="">HOME</a>
+        <a class="pure-menu-heading pure-menu-link menu-item" href="">MAP</a>
+        <a class="pure-menu-heading pure-menu-link menu-item" href=""
+          >SAVED CITIES</a
+        >
+        <a class="pure-menu-heading pure-menu-link menu-item" href="">TIPS</a>
+        <a
+          class="pure-menu-heading pure-menu-link menu-item"
+          href="https://www.cdc.gov/coronavirus/2019-nCoV/index.html"
+          >CDC WEBSITE</a
+        >
+      </nav>
     </header>
     <main>
-        <!-- hero -->
-        <div class="hero">
-            <div class="hero-wrap"><p class="about">As the COVID-19 virus sweeps acros the world, we wanted to create a tool that you can use to stay informed. Below, you will find information by state in the US including positive case numbers, and testing sites. We also have tips on how you can stay safe during these times.</p></div>
+      <!-- hero -->
+      <div class="hero">
+        <div class="hero-wrap">
+          <p class="about">
+            As the COVID-19 virus sweeps acros the world, we wanted to create a
+            tool that you can use to stay informed. Below, you will find
+            information by state in the US including positive case numbers, and
+            testing sites. We also have tips on how you can stay safe during
+            these times.
+          </p>
         </div>
-        <div id="map-container"></div>
+      </div>
+      <div id="map-container">
+        <p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7245780.26121338!2d-88.29722151197346!3d27.532122618489925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c1766591562abf%3A0xf72e13d35bc74ed0!2sFlorida%2C%20USA!5e0!3m2!1sen!2sde!4v1594946031057!5m2!1sen!2sde"
+            width="600"
+            height="450"
+            frameborder="0"
+            style="border: 0;"
+            allowfullscreen=""
+            aria-hidden="false"
+            tabindex="0"
+          ></iframe>
+        </p>
+      </div>
     </main>
     <!-- Selected Item Information -->
-    <aside id="aside">
-        <!-- Display City Info -->
-        <div class="pure-g info-container" id="state-info">
-            <!-- These headers will hold state name and date -->
-            <h3 class="pure-u-1 state" id="state-name">State</h3>
-            <h4 class="pure-u-2-3 date" id="state-date">Date</h4>
-            <!-- These will hold data passed from APO, right now placeholders have been inserted -->
-            <p class="pure-u-2-3">Positive Cases</p>
-            <p class="pure-u-1-3 stats" id="pos">(1000)</p>
-            <p class="pure-u-2-3">Negative Tests</p>
-            <p class="pure-u-1-3 stats" id="neg">(2000)</p>
-            <p class="pure-u-2-3">Hospitalized Currently</p>
-            <p class="pure-u-1-3 stats" id="hospital">(3000)</p>
-            <p class="pure-u-2-3">COVID Related Deaths</p>
-            <p class="pure-u-1-3 stats" id="deaths">(4000)</p>
-            <p class="pure-u-2-3">Last Updated</p>
-            <p class="pure-u-1-3 stats" id="update">1/1/2020</p>
-        </div>
-        <!-- Display Testing Centers -->
-        <div id=test-centers></div>
+    <aside id="city-container">
+      <!-- Display City Info -->
+      <div class="pure-g info-container" id="state-info">
+        <!-- These headers will hold state name and date -->
+        <h3 class="pure-u-1 state" id="state-name">State</h3>
+        <h4 class="pure-u-2-3 date" id="state-date">Date</h4>
+        <!-- These will hold data passed from APO, right now placeholders have been inserted -->
+        <p class="pure-u-2-3">Positive Cases</p>
+        <p class="pure-u-1-3 stats" id="pos">(1000)</p>
+        <p class="pure-u-2-3">Negative Tests</p>
+        <p class="pure-u-1-3 stats" id="neg">(2000)</p>
+        <p class="pure-u-2-3">Hospitalized Currently</p>
+        <p class="pure-u-1-3 stats" id="hospital">(3000)</p>
+        <p class="pure-u-2-3">COVID Related Deaths</p>
+        <p class="pure-u-1-3 stats" id="deaths">(4000)</p>
+        <p class="pure-u-2-3">Last Updated</p>
+        <p class="pure-u-1-3 stats" id="update">1/1/2020</p>
+      </div>
+      <!-- Display Testing Centers -->
+      <div id="test-centers"></div>
     </aside>
     <!-- Footer -->
     <footer></footer>
     <script src="./assets/JS/script.js"></script>
-</body>
+  </body>
 </html>
