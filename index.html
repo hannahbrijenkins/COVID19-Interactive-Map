@@ -12,6 +12,11 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans|Work+Sans:300"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
     <!-- PURE CSS Framework -->
     <link
       rel="stylesheet"
@@ -56,20 +61,15 @@
           </p>
         </div>
       </div>
-      <div id="map-container">
-        <p>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7245780.26121338!2d-88.29722151197346!3d27.532122618489925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c1766591562abf%3A0xf72e13d35bc74ed0!2sFlorida%2C%20USA!5e0!3m2!1sen!2sde!4v1594946031057!5m2!1sen!2sde"
-            width="600"
-            height="450"
-            frameborder="0"
-            style="border: 0;"
-            allowfullscreen=""
-            aria-hidden="false"
-            tabindex="0"
-          ></iframe>
-        </p>
-      </div>
+      <div id="map"></div>
+      <p>
+        <a href="https://www.maptiler.com/copyright/" target="_blank"
+          >© MapTiler</a
+        >
+        <a href="https://www.openstreetmap.org/copyright" target="_blank"
+          >© OpenStreetMap contributors</a
+        >
+      </p>
     </main>
     <!-- Selected Item Information -->
     <aside id="city-container">
@@ -94,39 +94,21 @@
       <div id="test-centers"></div>
     </aside>
     <!-- Footer -->
-    <footer>
-      <h4>
-        COVID TIPS
-        <ul class="tips-rotate">
-          <li>
-            Clean your hands often, either with soap and water for 20 seconds or
-            a hand sanitizer that contains at least 60% alcohol.
-          </li>
-          <li>Avoid close contact with people who are sick.</li>
-          <li>
-            Put distance between yourself and other people (at least 6 feet).
-          </li>
-          <li>
-            Cover your mouth and nose with a cloth face cover when around
-            others.
-          </li>
-          <li>
-            Clean and disinfect frequently touched objects and surfaces daily.
-          </li>
-          <li>
-            CDC recommends that people wear cloth face coverings in public
-            settings and when around people outside of their household,
-            especially when other social distancing measures are difficult to
-            maintain.
-          </li>
-          <li>
-            Cloth face coverings may help prevent people who have COVID-19 from
-            spreading the virus to others.
-          </li>
-          <li>STAY HOME!</li>
-        </ul>
-      </h4>
-    </footer>
+    <footer></footer>
+    <script>
+      var map = L.map('map').setView([0, 0], 1);
+      L.tileLayer(
+        'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=b4iRomc8BGMm2IJTbDXc',
+        {
+          tileSize: 512,
+          zoomOffset: -1,
+          minZoom: 1,
+          attribution:
+            '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
+          crossOrigin: true,
+        }
+      ).addTo(map);
+    </script>
     <script src="./assets/JS/script.js"></script>
   </body>
 </html>

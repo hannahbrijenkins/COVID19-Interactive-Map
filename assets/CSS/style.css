@@ -1,72 +1,74 @@
 /* universal */
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 /* root colors */
 :root {
-    --primary-color: #151e3f;
-    --dark-color: #030027;
-    --light-color: #E9F1F7;
-    --secondary-color: #ffc847;
-    --tertiary-color: #1985a1;
+  --primary-color: #151e3f;
+  --dark-color: #030027;
+  --light-color: #e9f1f7;
+  --secondary-color: #ffc847;
+  --tertiary-color: #1985a1;
 }
 /* applies to style of body */
 body {
-    background-color: var(--primary-color);
-    color: white;
-    Font-Family: 'Open Sans', Sans-Serif;
+  background-color: var(--primary-color);
+  color: white;
+  font-family: 'Open Sans', Sans-Serif;
 }
 header {
-    font-family: 'Work Sans', Sans-Serif;
-    background-color: var(--dark-color);
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    
+  font-family: 'Work Sans', Sans-Serif;
+  background-color: var(--dark-color);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 .title {
-    margin: 0;
-    padding: 15px 15px 0px 15px;
-    text-align: center;
+  margin: 0;
+  padding: 15px 15px 0px 15px;
+  text-align: center;
 }
 nav {
-    padding: 15px;
-    color: white;
+  padding: 15px;
+  color: white;
 }
 .menu-item {
-    color: white;
+  color: white;
 }
 .hero {
-    background-image: url("../images/hero.jpg");
-    background-size: cover;
-    background-position: center;
-    padding: 30px;
+  background-image: url('../images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 30px;
 }
 .hero-wrap {
-    background-color: rgba(233,241,247,0.5);
-    border-radius: .3em;
+  background-color: rgba(233, 241, 247, 0.5);
+  border-radius: 0.3em;
 }
 .about {
-    color: var(--dark-color);
-    font-size: .8em;
-    text-align: center;
-    font-weight: bold;
-    padding: 10%;
-    line-height: .5cm;
+  color: var(--dark-color);
+  font-size: 0.8em;
+  text-align: center;
+  font-weight: bold;
+  padding: 10%;
+  line-height: 0.5cm;
 }
 .info-container {
-    padding: 15px;
+  padding: 15px;
 }
 .state {
-    font-family: 'Work Sans', Sans-Serif;;
+  font-family: 'Work Sans', Sans-Serif;
 }
 .stats {
-    justify-self: end;
+  justify-self: end;
 }
 
-#map-container {
-    height: 300px;
-    width: 100%;
+#map {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
