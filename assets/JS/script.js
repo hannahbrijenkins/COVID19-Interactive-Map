@@ -54,6 +54,22 @@ function stateSpecificData(stateData) {
   updateContainerEl.innerHTML = `${stateData.dateModified}`;
 }
 
+function interactiveMap() {
+  var map = L.map('map').setView([0, 0], 1);
+  L.tileLayer(
+    'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=b4iRomc8BGMm2IJTbDXc',
+    {
+      tileSize: 512,
+      zoomOffset: -1,
+      minZoom: 1,
+      attribution:
+        '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
+      crossOrigin: true,
+    }
+  ).addTo(map);
+}
+
+interactiveMap();
 covidData();
 
 // function populateMapData {
