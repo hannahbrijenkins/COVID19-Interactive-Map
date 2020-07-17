@@ -1,12 +1,11 @@
+const mapContainerEl = document.querySelector(`#map-container`);
+const cityContainerEl = document.querySelector(`#city-container`);
+const infoContainerEl = document.querySelector(`#info-container`);
+const testCentersEl = document.querySelector(`test-centers`);
+
 // Create array or objects
     // Save each state latitude/longitude
     // Populate data for each state on map with markers
-
-// Dropdown to select state
-    // Capture value of the selected state
-    // Pass into fetch function
-    // Return data
-    // Pass data into functions
 
 
 // On page load show testing centers
