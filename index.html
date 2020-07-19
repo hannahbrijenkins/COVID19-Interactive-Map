@@ -1,37 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COVID-19 Interactive Map</title>
     <!-- Google Font -->
     <!--Font Families
         Font-Family: 'Work Sans', Sans-Serif;
         Font-Family: 'Open Sans', Sans-Serif;-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Work+Sans:300" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans|Work+Sans:300"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
     <!-- PURE CSS Framework -->
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+      integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ"
+      crossorigin="anonymous"
+    />
     <!-- Style Sheet -->
-    <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="assets/CSS/style.css" />
+  </head>
+  <body>
     <header>
-        <h1 class="title">COVID-19 Interactive Map</h1>
-        <!-- Navigation Bar -->
-        <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
-            <a class="pure-menu-heading pure-menu-link menu-item" href="">HOME</a>
-            <a class="pure-menu-heading pure-menu-link menu-item" href="">MAP</a>
-            <a  class="pure-menu-heading pure-menu-link menu-item" href="">SAVED CITIES</a>
-            <a  class="pure-menu-heading pure-menu-link menu-item" href="">TIPS</a>
-            <a  class="pure-menu-heading pure-menu-link menu-item" href="https://www.cdc.gov/coronavirus/2019-nCoV/index.html">CDC WEBSITE</a>
-        </nav>
+      <h1 class="title">COVID-19 Interactive Map</h1>
+      <!-- Navigation Bar -->
+      <nav
+        id="nav-container"
+        class="pure-menu pure-menu-horizontal pure-menu-scrollable"
+      >
+        <a class="pure-menu-heading pure-menu-link menu-item" href="">HOME</a>
+        <a class="pure-menu-heading pure-menu-link menu-item" href="">MAP</a>
+        <a class="pure-menu-heading pure-menu-link menu-item" href=""
+          >SAVED CITIES</a
+        >
+        <a class="pure-menu-heading pure-menu-link menu-item" href="">TIPS</a>
+        <a
+          class="pure-menu-heading pure-menu-link menu-item"
+          href="https://www.cdc.gov/coronavirus/2019-nCoV/index.html"
+          >CDC WEBSITE</a
+        >
+      </nav>
     </header>
     <main>
-        <!-- hero -->
-        <div class="hero">
-            <div class="hero-wrap"><p class="about">As the COVID-19 virus sweeps acros the world, we wanted to create a tool that you can use to stay informed. Below, you will find information by state in the US including positive case numbers, and testing sites. We also have tips on how you can stay safe during these times.</p></div>
+      <!-- hero -->
+      <div class="hero">
+        <div class="hero-wrap">
+          <p class="about">
+            As the COVID-19 virus sweeps acros the world, we wanted to create a
+            tool that you can use to stay informed. Below, you will find
+            information by state in the US including positive case numbers, and
+            testing sites. We also have tips on how you can stay safe during
+            these times.
+          </p>
         </div>
-        <div id="map"></div>
+      </div>
+      <div id="map"></div>
+      <p>
+        <a href="https://www.maptiler.com/copyright/" target="_blank"
+          >© MapTiler</a
+        >
+        <a href="https://www.openstreetmap.org/copyright" target="_blank"
+          >© OpenStreetMap contributors</a
+        >
+      </p>
     </main>
     <!-- Selected Item Information -->
     <aside id="aside">
@@ -58,5 +96,5 @@
     <!-- Footer -->
     <footer></footer>
     <script src="./assets/JS/script.js"></script>
-</body>
+  </body>
 </html>
