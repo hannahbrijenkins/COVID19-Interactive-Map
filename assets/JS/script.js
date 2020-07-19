@@ -15,7 +15,6 @@ const updateContainerEl = document.querySelector('#update');
 const testCentersEl = document.querySelector(`#test-centers`);
 
 // states
-const states = 'al';
 const stateInfo = [
   {
     state: 'Alabama',
@@ -277,10 +276,6 @@ const stateInfo = [
 // Map declaration
 let map = L.map(mapContainerEl).setView([37.0902, -95.7129], 4);
 
-// Array to hold data for markers;
-let markers = [];
-
-
 async function covidData(state) {
   // state Specific data
   try {
@@ -293,16 +288,27 @@ async function covidData(state) {
     console.log(formattedData);
     // Pass data into function
     stateSpecificData(formattedData);
-  } catch {
-    console.log('error');
+  } catch (error) {
+    // Append text to the front end to say state isn't found
+    console.log(error);
   }
 }
 
 function stateSpecificData(stateData) {
-  // Data to consider
-  // State - Date
-  stateNameContainerEl.innerHTML = `State: ${stateData.state}`;
-  stateDataContainerEl.innerHTML = `Date: ${stateData.date}`;
+  // Look at each object in the array of objects
+  stateInfo.map((state) => {
+    // If the abbreviated state matches the abbreviation of the object
+    if(stateData.state.toLowerCase() === state.abbreviation) {
+      // Print the full state name
+      stateNameContainerEl.innerHTML = `State: ${state.state}`;
+    }
+  });
+
+  // Convert date to a string and format it
+  const toStringDate = stateData.date.toString();
+  let date = `${toStringDate.substring(4,6)}/${toStringDate.substring(6,8)}/${toStringDate.substring(0,4)}`;  
+  stateDataContainerEl.innerHTML = `Date: ${date}`;
+
   // Positive cases: Positive Total (Increase Number, Neg-Red, Pos-Green)Negative Total
   positiveCasesEl.innerHTML = `${stateData.positive} (${stateData.positiveIncrease})`;
   // Negative Cases: Negative Total (Increase/Decrease)
@@ -335,22 +341,14 @@ function createMapMarkers(){
   }
 }
 
-function populateStateInfo(event){
-  const stateAbbrev = event.originalEvent.srcElement.title
+function grabStateAbbrev(event){
+  // Grab state abbreviation from the title
+  const stateAbbrev = event.originalEvent.srcElement.title;
+  // pass the abbreviation to the api call to fetch the data
   covidData(stateAbbrev);
 }
 
 interactiveMap();
 createMapMarkers();
 
-map.addEventListener("click", populateStateInfo);
-
-// function populateMapData {
-//     // Data to consider
-//         // State - Date
-//         // Positive cases: Positive Total (Increase Number, Neg-Red, Pos-Green)Negative Total
-//         // Negative Cases: Negative Total (Increase/Decrease)
-//         // Hospitalized Currently
-//         // Death Total
-//         // Time Updated
-// }
+map.addEventListener("click", grabStateAbbrev);
