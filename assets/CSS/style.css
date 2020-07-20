@@ -13,9 +13,20 @@
 }
 
 #mapid {
-  width: 690px;
+  width: 100%;
   height: 490px;
 }
+
+label {
+  display: block;
+  font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+  margin: 0.4rem 0;
+}
+
 /* applies to style of body */
 body {
   background-color: var(--primary-color);

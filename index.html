@@ -54,44 +54,54 @@
           >CDC WEBSITE</a
         >
       </nav>
+      <label for="site-search">State Search:</label>
+      <input
+        type="search"
+        id="state-search"
+        name="q"
+        aria-label="Search for Specific State"
+      />
+
+      <button>Search</button>
     </header>
     <main>
-      <!-- hero -->
-      <div class="hero">
-        <div class="hero-wrap">
-          <p class="about">
-            As the COVID-19 virus sweeps acros the world, we wanted to create a
-            tool that you can use to stay informed. Below, you will find
-            information by state in the US including positive case numbers, and
-            testing sites. We also have tips on how you can stay safe during
-            these times.
-          </p>
+      <!-- Selected Item Information -->
+      <aside id="aside">
+        <!-- Display City Info -->
+        <div class="pure-g info-container" id="state-info">
+          <!-- These headers will hold state name and date -->
+          <h3 class="pure-u-1-3 state" id="state-name">State</h3>
+          <h4 class="pure-u-2-3 date" id="state-date">Date</h4>
+          <!-- These will hold data passed from APO, right now placeholders have been inserted -->
+          <p class="pure-u-2-3">Positive Cases</p>
+          <p class="pure-u-1-3 stats" id="pos">(1000)</p>
+          <p class="pure-u-2-3">Negative Tests</p>
+          <p class="pure-u-1-3 stats" id="neg">(2000)</p>
+          <p class="pure-u-2-3">Hospitalized Currently</p>
+          <p class="pure-u-1-3 stats" id="hospital">(3000)</p>
+          <p class="pure-u-2-3">COVID Related Deaths</p>
+          <p class="pure-u-1-3 stats" id="deaths">(4000)</p>
+          <p class="pure-u-2-3">Last Updated</p>
+          <p class="pure-u-1-3 stats" id="update">1/1/2020</p>
         </div>
-      </div>
-      <div id="mapid"></div>
+        <div id="mapid"></div>
+        <!-- Display Testing Centers -->
+        <div id="test-centers"></div>
+      </aside>
     </main>
-    <!-- Selected Item Information -->
-    <aside id="aside">
-      <!-- Display City Info -->
-      <div class="pure-g info-container" id="state-info">
-        <!-- These headers will hold state name and date -->
-        <h3 class="pure-u-1-3 state" id="state-name">State</h3>
-        <h4 class="pure-u-2-3 date" id="state-date">Date</h4>
-        <!-- These will hold data passed from APO, right now placeholders have been inserted -->
-        <p class="pure-u-2-3">Positive Cases</p>
-        <p class="pure-u-1-3 stats" id="pos">(1000)</p>
-        <p class="pure-u-2-3">Negative Tests</p>
-        <p class="pure-u-1-3 stats" id="neg">(2000)</p>
-        <p class="pure-u-2-3">Hospitalized Currently</p>
-        <p class="pure-u-1-3 stats" id="hospital">(3000)</p>
-        <p class="pure-u-2-3">COVID Related Deaths</p>
-        <p class="pure-u-1-3 stats" id="deaths">(4000)</p>
-        <p class="pure-u-2-3">Last Updated</p>
-        <p class="pure-u-1-3 stats" id="update">1/1/2020</p>
+
+    <!-- hero -->
+    <div class="hero">
+      <div class="hero-wrap">
+        <p class="about">
+          As the COVID-19 virus sweeps acros the world, we wanted to create a
+          tool that you can use to stay informed. Below, you will find
+          information by state in the US including positive case numbers, and
+          testing sites. We also have tips on how you can stay safe during these
+          times.
+        </p>
       </div>
-      <!-- Display Testing Centers -->
-      <div id="test-centers"></div>
-    </aside>
+    </div>
     <!-- Footer -->
     <footer></footer>
     <script src="./assets/JS/script.js"></script>

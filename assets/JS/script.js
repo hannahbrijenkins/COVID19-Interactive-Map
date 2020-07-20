@@ -1,5 +1,5 @@
 // Containers
-const mapContainerEl = document.querySelector('#map');
+const mapContainerEl = document.querySelector('#mapid');
 const cityContainerEl = document.querySelector('#city-container');
 const infoContainerEl = document.querySelector('#info-container');
 
@@ -271,15 +271,10 @@ const stateInfo = [
     coords: [42.755966, -107.30249],
     abbreviation: 'wy',
   },
-  {
-    state: 'District of Columbia',
-    coords: [38.8974, -77.0268],
-  },
-  {
-    state: 'Puerto Rico',
-    coords: [18.2491, -66.628],
-  },
 ];
+
+// Map declaration
+let map = L.map(mapContainerEl).setView([37.0902, -95.7129], 4);
 
 async function covidData(state) {
   // state Specific data
@@ -328,8 +323,7 @@ function stateSpecificData(data) {
   updateContainerEl.innerHTML = `${data.dateModified}`;
 }
 
-function covidMap() {
-  const map = L.map('mapid').setView([38.491, -94.458], 4);
+function interactiveMap() {
   const attribution =
     '&copy; <a href="https://www.opentstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
@@ -357,6 +351,11 @@ function covidMap() {
   };
 
   info.addTo(map);
+  for (let i = 0; i < stateInfo.length; i++) {
+    let marker = L.marker([stateInfo[i].coords[0], stateInfo[i].coords[1]], {
+      title: stateInfo[i].abbreviation,
+    }).addTo(map);
+  }
 }
 
 function grabStateAbbrev(event) {
@@ -366,6 +365,6 @@ function grabStateAbbrev(event) {
   covidData(stateAbbrev);
 }
 
-covidMap();
+interactiveMap();
 
-mapid.addEventListener('click', grabStateAbbrev);
+map.addEventListener('click', grabStateAbbrev);
