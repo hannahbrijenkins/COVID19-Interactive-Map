@@ -281,9 +281,6 @@ const stateInfo = [
   },
 ];
 
-// Map declaration
-let map = L.map(mapContainerEl).setView([37.0902, -95.7129], 4);
-
 async function covidData(state) {
   // state Specific data
   try {
@@ -331,24 +328,35 @@ function stateSpecificData(data) {
   updateContainerEl.innerHTML = `${data.dateModified}`;
 }
 
-function interactiveMap() {
-  L.tileLayer(
-    'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=b4iRomc8BGMm2IJTbDXc',
-    {
-      tileSize: 512,
-      zoomOffset: -1,
-      maxZoom: 6,
-      attribution:
-        '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
-      crossOrigin: true,
-    }
-  ).addTo(map);
+function covidMap() {
+  const map = L.map('mapid').setView([38.491, -94.458], 4);
+  const attribution =
+    '&copy; <a href="https://www.opentstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+  const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const tiles = L.tileLayer(tileUrl, { attribution });
+  tiles.addTo(map);
+
   for (let i = 0; i < stateInfo.length; i++) {
     let marker = L.marker([stateInfo[i].coords[0], stateInfo[i].coords[1]], {
       title: stateInfo[i].abbreviation,
     }).addTo(map);
-    marker.bindPopup('<b> Marker Test </b>').openPopup();
   }
+  //Info Overlay
+  var info = L.control();
+
+  info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+  };
+
+  // method that we will use to update the control based on feature properties passed
+  info.update = function (props) {
+    this._div.innerHTML = '<h4>COVID-19 US STATS</h4>';
+  };
+
+  info.addTo(map);
 }
 
 function grabStateAbbrev(event) {
@@ -358,6 +366,6 @@ function grabStateAbbrev(event) {
   covidData(stateAbbrev);
 }
 
-interactiveMap();
+covidMap();
 
-map.addEventListener('click', grabStateAbbrev);
+mapid.addEventListener('click', grabStateAbbrev);

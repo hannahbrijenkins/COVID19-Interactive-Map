@@ -12,10 +12,9 @@
   --tertiary-color: #1985a1;
 }
 
-#map {
-  width: 100%;
-  min-height: 300px;
-  margin-bottom: 30px;
+#mapid {
+  width: 690px;
+  height: 490px;
 }
 /* applies to style of body */
 body {
@@ -92,4 +91,17 @@ nav {
   text-align: center;
   justify-self: start;
   align-self: end;
+}
+
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.info h4 {
+  margin: 0 0 5px;
+  color: rgb(0, 0, 0);
 }
