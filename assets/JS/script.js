@@ -5,7 +5,7 @@ const infoContainerEl = document.querySelector('#info-container');
 
 // State Specific Data Variables
 const stateNameContainerEl = document.querySelector('#state-name');
-const stateDataContainerEl = document.querySelector('#state-date');
+const stateDateContainerEl = document.querySelector('#state-date');
 const positiveCasesEl = document.querySelector('#pos');
 const negativeCasesEl = document.querySelector('#neg');
 const hospitalContainerEl = document.querySelector('#hospital');
@@ -306,7 +306,7 @@ function stateSpecificData(data) {
   // Convert date to a string and format it
   const toStringDate = data.date.toString();
   let date = `${toStringDate.substring(4,6)}/${toStringDate.substring(6,8)}/${toStringDate.substring(0,4)}`;  
-  dataContainerEl.innerHTML = `Date: ${date}`;
+  stateDateContainerEl.innerHTML = `Date: ${date}`;
 
   // Positive cases: Positive Total (Increase Number, Neg-Red, Pos-Green)Negative Total
   positiveCasesEl.innerHTML = `${data.positive} (${data.positiveIncrease})`;
