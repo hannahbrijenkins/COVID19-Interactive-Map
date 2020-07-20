@@ -336,7 +336,8 @@ function interactiveMap() {
       title: stateInfo[i].abbreviation,
     }).addTo(map);
   }
-  //Info Overlay
+
+  //Overlay(feel free to scrap this if you deem unnecessary)
   var info = L.control();
 
   info.onAdd = function (map) {
@@ -345,7 +346,7 @@ function interactiveMap() {
     return this._div;
   };
 
-  // method that we will use to update the control based on feature properties passed
+  // Overlay
   info.update = function (props) {
     this._div.innerHTML = '<h4>COVID-19 US STATS</h4>';
   };
