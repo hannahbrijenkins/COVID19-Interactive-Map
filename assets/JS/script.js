@@ -280,12 +280,11 @@ async function covidData(state) {
   // state Specific data
   try {
     // Fetch Data
-    const stateData = await fetch(
+    const unformattedData = await fetch(
       `https://covidtracking.com/api/v1/states/${state}/current.json`
     );
     // Format Data
-    const formattedData = await stateData.json();
-    console.log(formattedData);
+    const formattedData = await unformattedData.json();
     // Pass data into function
     stateSpecificData(formattedData);
   } catch (error) {
@@ -294,31 +293,31 @@ async function covidData(state) {
   }
 }
 
-function stateSpecificData(stateData) {
+function stateSpecificData(data) {
   // Look at each object in the array of objects
   stateInfo.map((state) => {
     // If the abbreviated state matches the abbreviation of the object
-    if(stateData.state.toLowerCase() === state.abbreviation) {
+    if(data.state.toLowerCase() === state.abbreviation) {
       // Print the full state name
       stateNameContainerEl.innerHTML = `State: ${state.state}`;
     }
-  });
+  })
 
   // Convert date to a string and format it
-  const toStringDate = stateData.date.toString();
+  const toStringDate = data.date.toString();
   let date = `${toStringDate.substring(4,6)}/${toStringDate.substring(6,8)}/${toStringDate.substring(0,4)}`;  
-  stateDataContainerEl.innerHTML = `Date: ${date}`;
+  dataContainerEl.innerHTML = `Date: ${date}`;
 
   // Positive cases: Positive Total (Increase Number, Neg-Red, Pos-Green)Negative Total
-  positiveCasesEl.innerHTML = `${stateData.positive} (${stateData.positiveIncrease})`;
+  positiveCasesEl.innerHTML = `${data.positive} (${data.positiveIncrease})`;
   // Negative Cases: Negative Total (Increase/Decrease)
-  negativeCasesEl.innerHTML = `${stateData.negative} (${stateData.negativeIncrease})`;
+  negativeCasesEl.innerHTML = `${data.negative} (${data.negativeIncrease})`;
   // Hospitalized Currently
-  hospitalContainerEl.innerHTML = `${stateData.hospitalized}`;
+  hospitalContainerEl.innerHTML = `${data.hospitalizedCurrently}`;
   // Death Total
-  deathContainerEl.innerHTML = `${stateData.deathConfirmed}`;
+  deathContainerEl.innerHTML = `${data.deathConfirmed}`;
   // Time Updated
-  updateContainerEl.innerHTML = `${stateData.dateModified}`;
+  updateContainerEl.innerHTML = `${data.dateModified}`;
 }
 
 function interactiveMap() {
