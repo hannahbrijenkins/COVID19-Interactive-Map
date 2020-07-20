@@ -271,6 +271,14 @@ const stateInfo = [
     coords: [42.755966, -107.30249],
     abbreviation: 'wy',
   },
+  {
+    state: 'District of Columbia',
+    coords: [38.8974, -77.0268],
+  },
+  {
+    state: 'Puerto Rico',
+    coords: [18.2491, -66.628],
+  },
 ];
 
 // Map declaration
@@ -339,6 +347,7 @@ function interactiveMap() {
     let marker = L.marker([stateInfo[i].coords[0], stateInfo[i].coords[1]], {
       title: stateInfo[i].abbreviation,
     }).addTo(map);
+    marker.bindPopup('<b> Marker Test </b>').openPopup();
   }
 }
 
@@ -350,6 +359,5 @@ function grabStateAbbrev(event) {
 }
 
 interactiveMap();
-// createMapMarkers();
 
 map.addEventListener('click', grabStateAbbrev);
