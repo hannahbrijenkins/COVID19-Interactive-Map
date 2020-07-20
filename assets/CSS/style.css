@@ -24,10 +24,14 @@ body {
   font-family: 'Open Sans', Sans-Serif;
 }
 /* Setting font styles with PURECSS framework */
-html, button, input, select, textarea,
-.pure-g [class *= "pure-u"] {
-    Font-Family: 'Work Sans', Sans-Serif;
-    Font-Family: 'Open Sans', Sans-Serif;
+html,
+button,
+input,
+select,
+textarea,
+.pure-g [class*='pure-u'] {
+  font-family: 'Work Sans', Sans-Serif;
+  font-family: 'Open Sans', Sans-Serif;
 }
 header {
   font-family: 'Work Sans', Sans-Serif;
@@ -71,21 +75,21 @@ nav {
   padding: 15px;
 }
 .state {
-    font-family: 'Work Sans', Sans-Serif;
+  font-family: 'Work Sans', Sans-Serif;
 }
 .stats {
-    justify-self: end;
+  justify-self: end;
 }
 #state-name {
-    font-family: 'Work Sans', Sans-Serif;
-    font-size: 40px;
-    text-align: center;
+  font-family: 'Work Sans', Sans-Serif;
+  font-size: 40px;
+  text-align: center;
 }
 #state-date {
-    height: 100%;
-    font-family: 'Work Sans', Sans-Serif;
-    font-size: 30px;
-    text-align: center;
-    justify-self: start;
-    align-self: end;
+  height: 100%;
+  font-family: 'Work Sans', Sans-Serif;
+  font-size: 30px;
+  text-align: center;
+  justify-self: start;
+  align-self: end;
 }
