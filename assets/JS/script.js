@@ -14,6 +14,11 @@ const updateContainerEl = document.querySelector('#update');
 
 const testCentersEl = document.querySelector(`#test-centers`);
 
+let stateStorage = JSON.parse(localStorage.getItem("stateDataStorage"));
+if (!stateStorage) {
+  stateStorage = [];
+}
+console.log(stateStorage);
 // states
 const stateInfo = [
   {
@@ -279,12 +284,15 @@ let map = L.map(mapContainerEl).setView([37.0902, -95.7129], 4);
 async function covidData(state) {
   // state Specific data
   try {
+    //Code to check if state is saved to local storage
     // Fetch Data
-    const unformattedData = await fetch(
+    const unformattedData = await $.get(
       `https://covidtracking.com/api/v1/states/${state}/current.json`
     );
+    console.log(unformattedData);
     // Format Data
-    const formattedData = await unformattedData.json();
+    const formattedData = unformattedData;
+    console.log(formattedData);
     // Pass data into function
     stateSpecificData(formattedData);
   } catch (error) {
@@ -309,7 +317,7 @@ function stateSpecificData(data) {
     6,
     8
   )}/${toStringDate.substring(0, 4)}`;
-  dataContainerEl.innerHTML = `Date: ${date}`;
+  stateDataContainerEl.innerHTML = `Date: ${date}`;
 
   // Positive cases: Positive Total (Increase Number, Neg-Red, Pos-Green)Negative Total
   positiveCasesEl.innerHTML = `${data.positive} (${data.positiveIncrease})`;
@@ -321,6 +329,9 @@ function stateSpecificData(data) {
   deathContainerEl.innerHTML = `${data.deathConfirmed}`;
   // Time Updated
   updateContainerEl.innerHTML = `${data.dateModified}`;
+
+  stateStorage.push({ 'state': data.state, 'date': date });
+  localStorage.setItem('stateDataStorage', JSON.stringify(stateStorage));
 }
 
 function interactiveMap() {
@@ -332,14 +343,16 @@ function interactiveMap() {
   tiles.addTo(map);
 
   for (let i = 0; i < stateInfo.length; i++) {
-    let marker = L.marker([stateInfo[i].coords[0], stateInfo[i].coords[1]], {
-      title: stateInfo[i].abbreviation,
+    let coords1 = stateInfo[i].coords[0];
+    let coords2 = stateInfo[i].coords[1];
+    let stateabrv = stateInfo[i].abbreviation;
+    let marker = L.marker([coords1, coords2], {
+      title: stateabrv,
     }).addTo(map);
   }
 
   //Overlay(feel free to scrap this if you deem unnecessary)
   var info = L.control();
-
   info.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
     this.update();
@@ -352,11 +365,6 @@ function interactiveMap() {
   };
 
   info.addTo(map);
-  for (let i = 0; i < stateInfo.length; i++) {
-    let marker = L.marker([stateInfo[i].coords[0], stateInfo[i].coords[1]], {
-      title: stateInfo[i].abbreviation,
-    }).addTo(map);
-  }
 }
 
 function grabStateAbbrev(event) {
