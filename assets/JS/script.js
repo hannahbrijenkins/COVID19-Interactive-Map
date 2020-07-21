@@ -13,6 +13,7 @@ const deathContainerEl = document.querySelector('#deaths');
 const updateContainerEl = document.querySelector('#update');
 
 const testCentersEl = document.querySelector(`#test-centers`);
+const saveSearchEl = document.querySelector('#saveSearch')
 
 // states
 const stateInfo = [
@@ -306,7 +307,7 @@ function stateSpecificData(data) {
   // Convert date to a string and format it
   const toStringDate = data.date.toString();
   let date = `${toStringDate.substring(4,6)}/${toStringDate.substring(6,8)}/${toStringDate.substring(0,4)}`;  
-  dataContainerEl.innerHTML = `Date: ${date}`;
+  stateDataContainerEl.innerHTML = `Date: ${date}`;
 
   // Positive cases: Positive Total (Increase Number, Neg-Red, Pos-Green)Negative Total
   positiveCasesEl.innerHTML = `${data.positive} (${data.positiveIncrease})`;
@@ -351,3 +352,18 @@ interactiveMap();
 createMapMarkers();
 
 map.addEventListener("click", grabStateAbbrev);
+saveSearchEl.addEventListener("click", saveItems)
+
+// add button to HTML X
+// saves in a function X
+// get value of state
+// add list of saved states (state name)
+// prevent multiple states from appearing
+
+function saveItems(event) {
+  event.preventDefault();
+  var searchedState = stateNameContainerEl.innerHTML
+  console.log(searchedState)
+  var savedState = []
+  localStorage.setItem("state" ,JSON.stringify(searchedState))
+}
