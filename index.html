@@ -54,9 +54,10 @@
       <div id="mapid"></div>
       <!-- Display City Info -->
       <div class="pure-g info-container" id="state-info">
+        <button id="savestatebtn">Save State Info</button>
         <!-- These headers will hold state name and date -->
         <h3 class="pure-u-1-2 state stats" id="state-name">State</h3>
-        <h4 class="pure-u-1-2 date stats" id="state-date">Date</h4>
+        <h3 class="pure-u-1-2 date stats" id="state-date">Date</h3>
         <!-- These will hold data passed from APO, right now placeholders have been inserted -->
         <p class="pure-u-1-2 stats">Positive Cases:</p>
         <p class="pure-u-1-2 stats" id="pos"></p>
@@ -70,7 +71,9 @@
         <p class="pure-u-1-2 stats stats" id="update"></p>
       </div>
       <!-- Display Testing Centers -->
-      <div id="savedstates"></div>
+      <div id="savedstates" class="">
+        <h3 class="pure-u-1-2 info-container savedstates">Saved Searches</h3>
+      </div>
     </section>
   </main>
   <!-- Footer -->
