@@ -13,26 +13,31 @@ const deathContainerEl = document.querySelector('#deaths');
 const updateContainerEl = document.querySelector('#update');
 
 const testCentersEl = document.querySelector(`#test-centers`);
-const saveButton = document.getElementById("saveButton");
+const saveButton = document.getElementById("savestatebtn");
+const savedStatesUlEl = document.querySelector("#savedStates");
 
 let stateStorage = [];
+
 function saveState(event) {
   // Preventing the button from submitting information
   event.preventDefault();
+
   // Get the innerHTML of State Name Element
   const stateElement = stateNameContainerEl.innerHTML;
-  console.log(stateElement)
   // Slice it so we only save the actual state Name
   let state = stateElement.slice(7);
-  console.log(state);
   // Push the state into the localStorage array
   stateStorage.push(state);
   // Save localStorage array
   localStorage.setItem("state", JSON.stringify(stateStorage));
+
+  generateSavedStatesList(stateStorage);
 }
+
 function loadStates() {
-  if ("stateStorage" in localStorage) {
-    stateStorage = JSON.parse(localStorage.getItem("stateStorage"));
+  if ("state" in localStorage) {
+    stateStorage = JSON.parse(localStorage.getItem("state"));
+    generateSavedStatesList(stateStorage);
   }
 }
 
@@ -303,13 +308,9 @@ async function covidData(state) {
   try {
     //Code to check if state is saved to local storage
     // Fetch Data
-    const unformattedData = await $.get(
+    const formattedData = await $.get(
       `https://covidtracking.com/api/v1/states/${state}/current.json`
     );
-    console.log(unformattedData);
-    // Format Data
-    const formattedData = unformattedData;
-    console.log(formattedData);
     // Pass data into function
     stateSpecificData(formattedData);
   } catch (error) {
@@ -390,8 +391,31 @@ function grabStateAbbrev(event) {
   covidData(stateAbbrev);
 }
 
+function generateSavedStatesList(stateList){
+  // Clear the list
+  savedStatesUlEl.innerHTML = "";
+
+  // Re-render the list
+  for (let i = 0; i < stateList.length; i++) {
+    const savedState = document.createElement("li");
+    savedState.textContent = stateList[i];
+    savedStatesUlEl.appendChild(savedState);
+  }
+}
+
+function getStateClicked(event) {
+  const stateClicked = event.srcElement.innerHTML;
+
+  stateInfo.map((state) => {
+    if (stateClicked === state.state){
+      covidData(state.abbreviation);
+    }
+  })
+}
+
 interactiveMap();
 loadStates();
 
 map.addEventListener('click', grabStateAbbrev);
 saveButton.addEventListener('click', saveState);
+savedStatesUlEl.addEventListener("click", getStateClicked);
