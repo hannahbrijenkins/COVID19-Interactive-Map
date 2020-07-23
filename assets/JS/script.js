@@ -13,13 +13,29 @@ const deathContainerEl = document.querySelector('#deaths');
 const updateContainerEl = document.querySelector('#update');
 
 const testCentersEl = document.querySelector(`#test-centers`);
-const saveSearchEl = document.querySelector('#saveSearch')
+const saveButton = document.getElementById("saveButton");
 
-let stateStorage = JSON.parse(localStorage.getItem("stateDataStorage"));
-if (!stateStorage) {
-  stateStorage = [];
+let stateStorage = [];
+function saveState(event) {
+  // Preventing the button from submitting information
+  event.preventDefault();
+  // Get the innerHTML of State Name Element
+  const stateElement = stateNameContainerEl.innerHTML;
+  console.log(stateElement)
+  // Slice it so we only save the actual state Name
+  let state = stateElement.slice(7);
+  console.log(state);
+  // Push the state into the localStorage array
+  stateStorage.push(state);
+  // Save localStorage array
+  localStorage.setItem("state", JSON.stringify(stateStorage));
 }
-console.log(stateStorage);
+function loadStates() {
+  if ("stateStorage" in localStorage) {
+    stateStorage = JSON.parse(localStorage.getItem("stateStorage"));
+  }
+}
+
 // states
 const stateInfo = [
   {
@@ -309,6 +325,7 @@ function stateSpecificData(data) {
     if (data.state.toLowerCase() === state.abbreviation) {
       // Print the full state name
       stateNameContainerEl.innerHTML = `State: ${state.state}`;
+      //Slice
     }
   });
 
@@ -331,8 +348,6 @@ function stateSpecificData(data) {
   // Time Updated
   updateContainerEl.innerHTML = `${data.dateModified}`;
 
-  stateStorage.push({ 'state': data.state, 'date': date });
-  localStorage.setItem('stateDataStorage', JSON.stringify(stateStorage));
 }
 
 function interactiveMap() {
@@ -376,5 +391,7 @@ function grabStateAbbrev(event) {
 }
 
 interactiveMap();
+loadStates();
 
 map.addEventListener('click', grabStateAbbrev);
+saveButton.addEventListener('click', saveState);
