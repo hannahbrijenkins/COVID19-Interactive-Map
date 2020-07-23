@@ -398,6 +398,7 @@ function generateSavedStatesList(stateList){
   // Re-render the list
   for (let i = 0; i < stateList.length; i++) {
     const savedState = document.createElement("li");
+    savedState.classList.add("savedstatename");
     savedState.textContent = stateList[i];
     savedStatesUlEl.appendChild(savedState);
   }

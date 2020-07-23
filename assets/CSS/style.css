@@ -93,6 +93,7 @@ nav {
 .info-container {
   padding: 15px;
   box-sizing: border-box;
+  text-align: center;
 }
 #savestatebtn {
   display: block;
@@ -108,6 +109,22 @@ nav {
 #savestatebtn:hover {
   cursor: pointer;
   background-color: #e6a50f;
+}
+.savedstatename {
+  font-size: 40px;
+  background-color: var(--tertiary-color);
+  margin: 20px;
+  border-radius: 20px;
+  list-style-type: none;
+  padding: 20px;
+  text-align: center;
+}
+.savedstatenamewrap {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 25px;
+  margin: 45px
+  
 }
 .state {
   font-family: 'Work Sans', Sans-Serif;
