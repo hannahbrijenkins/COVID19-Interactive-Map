@@ -28,54 +28,54 @@
   <header>
     <h1 class="title">COVID-19 Interactive Map</h1>
     <!-- Navigation Bar -->
-    <nav id="nav-container" class="pure-menu pure-menu-horizontal pure-menu-scrollable">
-      <a class="pure-menu-heading pure-menu-link menu-item" href="">HOME</a>
-      <a class="pure-menu-heading pure-menu-link menu-item" href="">MAP</a>
+    <nav id="nav-container" class="pure-menu nav-bar">
+      <a class="pure-menu-heading pure-menu-link menu-item" href="#mapid">MAP</a>
       <a class="pure-menu-heading pure-menu-link menu-item" href="">SAVED CITIES</a>
-      <a class="pure-menu-heading pure-menu-link menu-item" href="">TIPS</a>
       <a class="pure-menu-heading pure-menu-link menu-item"
         href="https://www.cdc.gov/coronavirus/2019-nCoV/index.html">CDC WEBSITE</a>
     </nav>
   </header>
   <main>
+    <!-- hero -->
+    <div class="hero">
+      <div class="hero-wrap">
+        <p class="about">
+          As the COVID-19 virus sweeps acros the world, we wanted to create a
+          tool that you can use to stay informed. Below, you will find
+          information by state in the US including positive case numbers, and
+          testing sites. We also have tips on how you can stay safe during these
+          times.
+        </p>
+      </div>
+    </div>
     <!-- Selected Item Information -->
     <section id="information-block">
+      <!-- Map -->
+      <div id="mapid"></div>
       <!-- Display City Info -->
       <div class="pure-g info-container" id="state-info">
+        <button id="savestatebtn">Save State Info</button>
         <!-- These headers will hold state name and date -->
-        <button id="saveButton" type="button">Save State</button>
-        <h3 class="pure-u-1-3 state" id="state-name">State</h3>
-        <h4 class="pure-u-2-3 date" id="state-date">Date</h4>
+        <h3 class="pure-u-1-2 state stats" id="state-name">State</h3>
+        <h3 class="pure-u-1-2 date stats" id="state-date">Date</h3>
         <!-- These will hold data passed from APO, right now placeholders have been inserted -->
-        <p class="pure-u-2-3">Positive Cases</p>
-        <p class="pure-u-1-3 stats" id="pos">(1000)</p>
-        <p class="pure-u-2-3">Negative Tests</p>
-        <p class="pure-u-1-3 stats" id="neg">(2000)</p>
-        <p class="pure-u-2-3">Hospitalized Currently</p>
-        <p class="pure-u-1-3 stats" id="hospital">(3000)</p>
-        <p class="pure-u-2-3">COVID Related Deaths</p>
-        <p class="pure-u-1-3 stats" id="deaths">(4000)</p>
-        <p class="pure-u-2-3">Last Updated</p>
-        <p class="pure-u-1-3 stats" id="update">1/1/2020</p>
+        <p class="pure-u-1-2 stats">Positive Cases:</p>
+        <p class="pure-u-1-2 stats" id="pos"></p>
+        <p class="pure-u-1-2 stats">Negative Tests:</p>
+        <p class="pure-u-1-2 stats" id="neg"></p>
+        <p class="pure-u-1-2 stats">Hospitalized Currently:</p>
+        <p class="pure-u-1-2 stats" id="hospital"></p>
+        <p class="pure-u-1-2 stats">COVID Related Deaths:</p>
+        <p class="pure-u-1-2 stats" id="deaths"></p>
+        <p class="pure-u-1-2 stats">Last Updated:</p>
+        <p class="pure-u-1-2 stats stats" id="update"></p>
       </div>
-      <div id="mapid"></div>
       <!-- Display Testing Centers -->
-      <div id="test-centers"></div>
+      <div id="savedstates" class="">
+        <h3 class="pure-u-1-2 info-container savedstates">Saved Searches</h3>
+      </div>
     </section>
   </main>
-
-  <!-- hero -->
-  <div class="hero">
-    <div class="hero-wrap">
-      <p class="about">
-        As the COVID-19 virus sweeps acros the world, we wanted to create a
-        tool that you can use to stay informed. Below, you will find
-        information by state in the US including positive case numbers, and
-        testing sites. We also have tips on how you can stay safe during these
-        times.
-      </p>
-    </div>
-  </div>
   <!-- Footer -->
   <footer></footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

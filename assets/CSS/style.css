@@ -11,7 +11,12 @@
   --secondary-color: #ffc847;
   --tertiary-color: #1985a1;
 }
-
+/* ::-webkit-scrollbar-track {
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--dark-color);
+} */
 #mapid {
   width: 100%;
   height: 490px;
@@ -40,58 +45,99 @@ header {
   flex-direction: column;
   align-content: center;
   align-items: center;
+  justify-content: center;
 }
 .title {
+  font-size: 90px;
   margin: 0;
-  padding: 15px 15px 0px 15px;
+  padding: 25px 25px 0px 25px;
   text-align: center;
 }
 nav {
   padding: 15px;
   color: white;
+  margin: auto;
+}
+.nav-bar {
+  display: flex;
 }
 .menu-item {
   color: white;
+  font-size: 35px;
+  padding: 20px;
+  text-decoration: underline;
 }
 .hero {
   background-image: url('../images/hero.jpg');
   background-size: cover;
   background-position: center;
-  padding: 30px;
+  padding: 20px;
 }
 .hero-wrap {
   background-color: rgba(233, 241, 247, 0.5);
   border-radius: 0.3em;
+  margin: auto;
 }
 .about {
   color: var(--dark-color);
-  font-size: 0.8em;
+  font-size: 40px;
   text-align: center;
   font-weight: bold;
-  padding: 10%;
-  line-height: 0.5cm;
+  padding: 75px;
+  width: 70%;
+  margin: auto;
+}
+.information-block {
+  box-sizing: border-box;
 }
 .info-container {
   padding: 15px;
+  box-sizing: border-box;
+}
+#savestatebtn {
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  background-color: var(--secondary-color);
+  font-size: 25px;
+  font-style: italic;
+  margin: auto;
+  margin-bottom: 20px;
+}
+#savestatebtn:hover {
+  cursor: pointer;
+  background-color: #e6a50f;
 }
 .state {
   font-family: 'Work Sans', Sans-Serif;
 }
+.saved {
+  font-size: 30px;
+  width: 50%;
+
+box-sizing: border-box;}
 .stats {
-  justify-self: end;
+  font-size: 30px;
+  text-align: left;
+}
+.savedstates {
+  font-family: 'Work Sans', Sans-Serif;
+  font-size: 50px;
+  text-decoration: underline;
 }
 #state-name {
   font-family: 'Work Sans', Sans-Serif;
-  font-size: 40px;
-  text-align: center;
+  font-size: 50px;
+  text-decoration: underline;
 }
 #state-date {
   height: 100%;
   font-family: 'Work Sans', Sans-Serif;
-  font-size: 30px;
-  text-align: center;
+  font-size: 50px;
   justify-self: start;
   align-self: end;
+  text-decoration: underline;
 }
 
 .info {
