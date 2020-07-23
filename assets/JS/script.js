@@ -13,13 +13,34 @@ const deathContainerEl = document.querySelector('#deaths');
 const updateContainerEl = document.querySelector('#update');
 
 const testCentersEl = document.querySelector(`#test-centers`);
-const saveSearchEl = document.querySelector('#saveSearch')
+const saveButton = document.getElementById("savestatebtn");
+const savedStatesUlEl = document.querySelector("#savedStates");
 
-let stateStorage = JSON.parse(localStorage.getItem("stateDataStorage"));
-if (!stateStorage) {
-  stateStorage = [];
+let stateStorage = [];
+
+function saveState(event) {
+  // Preventing the button from submitting information
+  event.preventDefault();
+
+  // Get the innerHTML of State Name Element
+  const stateElement = stateNameContainerEl.innerHTML;
+  // Slice it so we only save the actual state Name
+  let state = stateElement.slice(7);
+  // Push the state into the localStorage array
+  stateStorage.push(state);
+  // Save localStorage array
+  localStorage.setItem("state", JSON.stringify(stateStorage));
+
+  generateSavedStatesList(stateStorage);
 }
-console.log(stateStorage);
+
+function loadStates() {
+  if ("state" in localStorage) {
+    stateStorage = JSON.parse(localStorage.getItem("state"));
+    generateSavedStatesList(stateStorage);
+  }
+}
+
 // states
 const stateInfo = [
   {
@@ -287,13 +308,9 @@ async function covidData(state) {
   try {
     //Code to check if state is saved to local storage
     // Fetch Data
-    const unformattedData = await $.get(
+    const formattedData = await $.get(
       `https://covidtracking.com/api/v1/states/${state}/current.json`
     );
-    console.log(unformattedData);
-    // Format Data
-    const formattedData = unformattedData;
-    console.log(formattedData);
     // Pass data into function
     stateSpecificData(formattedData);
   } catch (error) {
@@ -309,6 +326,7 @@ function stateSpecificData(data) {
     if (data.state.toLowerCase() === state.abbreviation) {
       // Print the full state name
       stateNameContainerEl.innerHTML = `State: ${state.state}`;
+      //Slice
     }
   });
 
@@ -331,8 +349,6 @@ function stateSpecificData(data) {
   // Time Updated
   updateContainerEl.innerHTML = `${data.dateModified}`;
 
-  stateStorage.push({ 'state': data.state, 'date': date });
-  localStorage.setItem('stateDataStorage', JSON.stringify(stateStorage));
 }
 
 function interactiveMap() {
@@ -375,6 +391,31 @@ function grabStateAbbrev(event) {
   covidData(stateAbbrev);
 }
 
+function generateSavedStatesList(stateList){
+  // Clear the list
+  savedStatesUlEl.innerHTML = "";
+
+  // Re-render the list
+  for (let i = 0; i < stateList.length; i++) {
+    const savedState = document.createElement("li");
+    savedState.textContent = stateList[i];
+    savedStatesUlEl.appendChild(savedState);
+  }
+}
+
+function getStateClicked(event) {
+  const stateClicked = event.srcElement.innerHTML;
+
+  stateInfo.map((state) => {
+    if (stateClicked === state.state){
+      covidData(state.abbreviation);
+    }
+  })
+}
+
 interactiveMap();
+loadStates();
 
 map.addEventListener('click', grabStateAbbrev);
+saveButton.addEventListener('click', saveState);
+savedStatesUlEl.addEventListener("click", getStateClicked);
