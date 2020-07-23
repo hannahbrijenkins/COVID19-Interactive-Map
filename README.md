@@ -1,10 +1,11 @@
 **
 # COVID-19 Interactive Map
+[Deployment](https://hannahbrijenkins.github.io/COVID19-Interactive-Map/)
 
 In today's world, there is often an array if misleading information being spread via news headlines and social media. This includes the devastating Corona virus that has slowed down the entire world.
 This web application is an interactive map that allows users to see COVID-19 statistics in the USA including the number of positive among other information. This straight-forward application also provides a carousel of tips and advice on staying safe from the virus, and how to protect others.
 
-<!-- (Will Insert Gif Here) -->
+![screenshot of deployed web application](assets/images/screenshot.png)
 
 ## How to Use
 
