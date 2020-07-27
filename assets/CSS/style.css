@@ -118,6 +118,7 @@ nav {
   list-style-type: none;
   padding: 20px;
   text-align: center;
+  cursor: pointer;
 }
 .savedstatenamewrap {
   padding-left: 20px;
@@ -168,4 +169,40 @@ box-sizing: border-box;}
 .info h4 {
   margin: 0 0 5px;
   color: rgb(0, 0, 0);
+}
+
+@media screen and (max-width: 992px) {
+  #state-name {
+    font-size: 35px;
+  }
+
+  #state-date {
+    font-size: 35px;
+  }
+
+  .stats {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .about, .stats, #state-name, #state-date {
+    font-size: 18px;
+  }
+
+  .menu-item {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 80px;
+  }
+
+  .savedstates {
+    font-size: 40px;
+  }
+
+  .savedstatename {
+    font-size: 30px;
+  }
 }
