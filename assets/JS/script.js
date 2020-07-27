@@ -311,6 +311,7 @@ async function covidData(state) {
     const formattedData = await $.get(
       `https://covidtracking.com/api/v1/states/${state}/current.json`
     );
+    console.log(formattedData)
     // Pass data into function
     stateSpecificData(formattedData);
   } catch (error) {
@@ -342,13 +343,24 @@ function stateSpecificData(data) {
   positiveCasesEl.innerHTML = `${data.positive} (${data.positiveIncrease})`;
   // Negative Cases: Negative Total (Increase/Decrease)
   negativeCasesEl.innerHTML = `${data.negative} (${data.negativeIncrease})`;
-  // Hospitalized Currently
-  hospitalContainerEl.innerHTML = `${data.hospitalizedCurrently}`;
-  // Death Total
-  deathContainerEl.innerHTML = `${data.deathConfirmed}`;
-  // Time Updated
-  updateContainerEl.innerHTML = `${data.dateModified}`;
 
+  // Currently hospitalized
+  if(data.hospitalizedCurrently === null){
+    hospitalContainerEl.innerHTML = "-";
+  } else {
+      // Hospitalized Currently
+  hospitalContainerEl.innerHTML = `${data.hospitalizedCurrently}`;
+  }
+  
+  // Death Total
+  if(data.deathConfirmed === null){
+    deathContainerEl.innerHTML = "-";
+  } else {
+    deathContainerEl.innerHTML = `${data.deathConfirmed}`;
+  }
+
+  // Time Updated
+  updateContainerEl.innerHTML = `${data.lastUpdateEt}`;
 }
 
 function interactiveMap() {
@@ -398,6 +410,7 @@ function generateSavedStatesList(stateList){
   // Re-render the list
   for (let i = 0; i < stateList.length; i++) {
     const savedState = document.createElement("li");
+    savedState.classList.add("savedstatename");
     savedState.textContent = stateList[i];
     savedStatesUlEl.appendChild(savedState);
   }
