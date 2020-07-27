@@ -102,7 +102,7 @@ const stateInfo = [
   },
   {
     name: 'Arkansas',
-    coords: [35.2010, -91.8318],
+    coords: [34.7465, -92.2896],
     abbreviation: 'ak',
   },
   {
@@ -411,8 +411,12 @@ function interactiveMap() {
     }).addTo(map);
   }
 
+  // Remove duplicate Arkansas marker
+  const mapMarkers = document.querySelector(".leaflet-marker-pane");
+  mapMarkers.removeChild(mapMarkers.childNodes[1]);
+
   //Overlay(feel free to scrap this if you deem unnecessary)
-  var info = L.control();
+  const info = L.control();
   info.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
     this.update();
